@@ -7,7 +7,8 @@ public class Main {
     public static void main(String[] args) {
 
         // TODO Initialise an int array with random numbers
-        int[] randomArray = Sorting.getRandomArray(7);
+        int arraySize = 1;
+        int[] randomArray = Sorting.getRandomArray(arraySize);
 
 
         // TODO Sort the array with your sorting algorithm
@@ -18,8 +19,8 @@ public class Main {
 
         // TODO Do a runtime analysis of your algorithm
 
-//        System.out.println(currentTimeMillis());
-//        Sorting.measureRuntime();
+        System.out.println(Sorting.measureRuntime(randomArray));
+
         //  For which array size does the execution time start to rise significantly?
 
 

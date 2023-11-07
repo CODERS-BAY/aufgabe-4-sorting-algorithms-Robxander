@@ -1,5 +1,6 @@
 package sort;
-import static java.lang.System.currentTimeMillis;
+
+import static java.lang.System.nanoTime;
 
 public class Sorting {
 
@@ -31,12 +32,24 @@ public static void sortArray(int[] array){
 
     // TODO Write a method to do a runtime analysis of your algorithm.
     public static long measureRuntime (int[] array){
-        long timeStart = currentTimeMillis();
+        long timeStart = nanoTime();
          sortArray(array);
-        long timeEnd = currentTimeMillis();
-        return (timeEnd -timeStart);
+        long timeEnd = nanoTime();
+        long difTime = (timeEnd -timeStart);
+        return reSize(difTime);
     }
-
+public static long reSize(long difTime){
+        if(difTime > 1000000){
+            System.out.println("Millisekunden: ");
+        return difTime/1000000;
+        } else if (difTime > 1000){
+            System.out.println("Mikrosekunden: ");
+            return difTime /1000;
+        } else {
+            System.out.println("Nanosekunden: ");
+            return difTime;
+        }
+}
 
 
     //  For which array size does the execution time start to rise significantly?
