@@ -15,11 +15,49 @@ public class Sorting {
     }
 
     // TODO Implement a sorting algorithm of your choice
-public static void sortArray(int[] array){
-    System.out.println("Hier ist das zu sortierende Array: ");
-    printArray(array);
+//public static void sortArray(int[] array){
+//    System.out.println("Hier ist das zu sortierende Array: ");
+//    printArray(array);
+//}
 
-}
+    public static void bubbleSort(int[] array) {
+        // TODO Implement algorithm
+        for (int i = 0; i < array.length; i++) {
+            boolean isSorted = true;
+            for (int j = 0; j < array.length - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    int a = array[j];
+                    int b = array[j + 1];
+                    array[j] = b;
+                    array[j + 1] = a;
+                    isSorted = false;
+                }
+//                printArray(array);
+            }
+//            System.out.println();
+            if (isSorted) {
+                return;
+            }
+        }
+    }
+
+    public static void quickSort(int[] array) {
+        int pivot = array[array.length - 1];
+        int countL = 0;
+        int countR = 0;
+        for (int i = 0; i < array.length; i++) {
+            countL = i;
+            if (array[i] > pivot) {
+                break;
+            }
+        }
+        for (int i = array.length-2; i > -1; i--) {
+            countR = i;
+            if (array[i] < pivot) {
+                break;
+            }
+        }
+    }
 
     // TODO Implement a printArray method
     public static void printArray(int[] array) {
@@ -31,22 +69,36 @@ public static void sortArray(int[] array){
 
 
     // TODO Write a method to do a runtime analysis of your algorithm.
-    public static long measureRuntime (int[] array){
+    public static long measureRuntimeBubblesort (int[] array){
         long timeStart = nanoTime();
-         sortArray(array);
+         bubbleSort(array);
         long timeEnd = nanoTime();
+
         long difTime = (timeEnd -timeStart);
         return reSize(difTime);
     }
+
+    public static long measureRuntimeQuicksort (int[] array){
+        long timeStart = nanoTime();
+        quickSort(array);
+        long timeEnd = nanoTime();
+
+        long difTime = (timeEnd -timeStart);
+        return reSize(difTime);
+    }
+
+
+
+
 public static long reSize(long difTime){
-        if(difTime > 1000000){
-            System.out.println("Millisekunden: ");
-        return difTime/1000000;
-        } else if (difTime > 1000){
-            System.out.println("Mikrosekunden: ");
-            return difTime /1000;
+        if(difTime > 1e6){
+            System.out.print("Millisekunden: ");
+        return (long)(difTime/1e6);
+//        } else if (difTime > 1000){
+//            System.out.print("Mikrosekunden: ");
+//            return difTime /1000;
         } else {
-            System.out.println("Nanosekunden: ");
+            System.out.print("Nanosekunden: ");
             return difTime;
         }
 }
