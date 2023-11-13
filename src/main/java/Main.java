@@ -15,7 +15,7 @@ public class Main {
 
 
         //Sort the array with your sorting algorithm
-       // Sorting.bubbleSort(randomArray);
+        Sorting.bubbleSort(randomArray);
 
         //Print the array to the console
         Sorting.printArray(randomArray);
@@ -24,6 +24,7 @@ public class Main {
         randomArray = Sorting.getRandomArray(arraySize);
 
         System.out.println(Sorting.measureRuntimeBubblesort(randomArray));
+        Sorting.setQuickCounterZero();
         System.out.println(Sorting.measureRuntimeQuicksort(randomArray, begin , end));
 
         //  For which array size does the execution time start to rise significantly?
@@ -33,7 +34,7 @@ public class Main {
 
 
         // Print the iterations counters on the console
-        // In order to count iteration bubbleCount turn off task 2
+
         System.out.println("Get Bubble Counts: " + Sorting.getBubbleCounts());
         System.out.println("Get Quick Counts: " + Sorting.getQuickCounts());
     }

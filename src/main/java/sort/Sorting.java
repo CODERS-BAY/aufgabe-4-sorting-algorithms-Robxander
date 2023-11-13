@@ -3,12 +3,12 @@ package sort;
 import static java.lang.System.nanoTime;
 
 public class Sorting {
-    private static int bubbleCounter = 0;
-    private static int quickCounter = 0;
+    private static int bubbleCounter;
+    private static int quickCounter;
 
     // Write a method to generate an array of size N initialised with random numbers
 
-    public static int[] getRandomArray(int size) {
+    public static  int[] getRandomArray(int size) {
         int[] array = new int[size];
         for (int i = 0; i < array.length; i++) {
             array[i] = (int) (10 * Math.random());
@@ -25,6 +25,7 @@ public class Sorting {
 //}
 
     public static void bubbleSort(int[] array) {
+        bubbleCounter = 0;
         for (int i = 0; i < array.length; i++) {
             boolean isSorted = true;
             for (int j = 0; j < array.length - 1; j++) {
@@ -52,8 +53,8 @@ public class Sorting {
 
 
     public static void quickSort(int[] numbers, int begin, int end) {
-
         if (begin < end) {
+            quickCounter++;
             int partitionIndex = partition(numbers, begin, end);
             quickSort(numbers, begin, partitionIndex - 1);
             quickSort(numbers, partitionIndex + 1, end);
@@ -69,7 +70,7 @@ public class Sorting {
                 numbers[j] = swapTemp;
             }
         }
-        quickCounter++;
+
         int swapTemp = numbers[i + 1];
         numbers[i + 1] = numbers[end];
         numbers[end] = swapTemp;
@@ -78,6 +79,9 @@ public class Sorting {
 
     public static int getQuickCounts (){
         return quickCounter;
+    }
+    public static int setQuickCounterZero(){
+        return quickCounter = 0;
     }
 
 
